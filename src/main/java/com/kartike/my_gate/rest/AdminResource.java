@@ -1,7 +1,7 @@
 package com.kartike.my_gate.rest;
 
 import com.kartike.my_gate.model.AdminDTO;
-import com.kartike.my_gate.service.AdminService;
+import com.kartike.my_gate.service.AdminServiceImpl;
 import jakarta.validation.Valid;
 import java.util.List;
 import java.util.UUID;
@@ -22,9 +22,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping(value = "/api/admins", produces = MediaType.APPLICATION_JSON_VALUE)
 public class AdminResource {
 
-    private final AdminService adminService;
+    private final AdminServiceImpl adminService;
 
-    public AdminResource(final AdminService adminService) {
+    public AdminResource(final AdminServiceImpl adminService) {
         this.adminService = adminService;
     }
 
@@ -56,5 +56,7 @@ public class AdminResource {
         adminService.delete(adminId);
         return ResponseEntity.noContent().build();
     }
+
+
 
 }

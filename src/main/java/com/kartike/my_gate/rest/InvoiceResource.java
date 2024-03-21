@@ -1,7 +1,7 @@
 package com.kartike.my_gate.rest;
 
 import com.kartike.my_gate.model.InvoiceDTO;
-import com.kartike.my_gate.service.InvoiceService;
+import com.kartike.my_gate.service.InvoiceServiceImpl;
 import com.kartike.my_gate.util.ReferencedException;
 import com.kartike.my_gate.util.ReferencedWarning;
 import jakarta.validation.Valid;
@@ -23,9 +23,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping(value = "/api/invoices", produces = MediaType.APPLICATION_JSON_VALUE)
 public class InvoiceResource {
 
-    private final InvoiceService invoiceService;
+    private final InvoiceServiceImpl invoiceService;
 
-    public InvoiceResource(final InvoiceService invoiceService) {
+    public InvoiceResource(final InvoiceServiceImpl invoiceService) {
         this.invoiceService = invoiceService;
     }
 

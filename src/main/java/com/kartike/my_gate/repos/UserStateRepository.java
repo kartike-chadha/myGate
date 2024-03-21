@@ -8,8 +8,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface UserStateRepository extends JpaRepository<UserState, Integer> {
 
-    UserState findFirstByUser(Owner owner);
+    UserState findFirstByOwner(Owner owner);
 
-    UserState findFirstByUser(Vendor vendor);
+    UserState findFirstByVendor(Vendor vendor);
 
 }

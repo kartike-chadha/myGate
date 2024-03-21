@@ -1,7 +1,7 @@
 package com.kartike.my_gate.rest;
 
 import com.kartike.my_gate.model.AmenityRequestDTO;
-import com.kartike.my_gate.service.AmenityRequestService;
+import com.kartike.my_gate.service.AmenityRequestServiceImpl;
 import jakarta.validation.Valid;
 import java.util.List;
 import org.springframework.http.HttpStatus;
@@ -21,9 +21,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping(value = "/api/amenityRequests", produces = MediaType.APPLICATION_JSON_VALUE)
 public class AmenityRequestResource {
 
-    private final AmenityRequestService amenityRequestService;
+    private final AmenityRequestServiceImpl amenityRequestService;
 
-    public AmenityRequestResource(final AmenityRequestService amenityRequestService) {
+    public AmenityRequestResource(final AmenityRequestServiceImpl amenityRequestService) {
         this.amenityRequestService = amenityRequestService;
     }
 

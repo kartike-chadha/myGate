@@ -38,11 +38,12 @@ public class GateLog {
     )
     private Integer logId;
 
-    @Column(nullable = false)
-    private String houseId;
-
-    @Column(nullable = false)
-    private UUID userId;
+//    Removed because adding reference with join columns which will handle the creation of fk field
+//    @Column(nullable = false)
+//    private String houseId;
+//
+//    @Column(nullable = false)
+//    private UUID userId;
 
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
@@ -56,12 +57,14 @@ public class GateLog {
     private OffsetDateTime logTime;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id")
-    private Owner user;
+    @JoinColumn(name = "owner_user_id")
+//    @Column(insertable = false, updatable = false)
+    private Owner owner;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id")
-    private Vendor user;
+    @JoinColumn(name = "vendor_user_id")
+//    @Column(insertable = false, updatable = false)
+    private Vendor vendor;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "house_id")

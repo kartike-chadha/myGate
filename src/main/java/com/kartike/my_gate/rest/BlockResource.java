@@ -1,7 +1,7 @@
 package com.kartike.my_gate.rest;
 
 import com.kartike.my_gate.model.BlockDTO;
-import com.kartike.my_gate.service.BlockService;
+import com.kartike.my_gate.service.BlockServiceImpl;
 import com.kartike.my_gate.util.ReferencedException;
 import com.kartike.my_gate.util.ReferencedWarning;
 import jakarta.validation.Valid;
@@ -23,9 +23,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping(value = "/api/blocks", produces = MediaType.APPLICATION_JSON_VALUE)
 public class BlockResource {
 
-    private final BlockService blockService;
+    private final BlockServiceImpl blockService;
 
-    public BlockResource(final BlockService blockService) {
+    public BlockResource(final BlockServiceImpl blockService) {
         this.blockService = blockService;
     }
 

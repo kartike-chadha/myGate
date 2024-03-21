@@ -19,9 +19,6 @@ public class GateLogDTO {
     private String houseId;
 
     @NotNull
-    private UUID userId;
-
-    @NotNull
     private UserStateEnum userType;
 
     @NotNull
@@ -29,11 +26,4 @@ public class GateLogDTO {
 
     @NotNull
     private OffsetDateTime logTime;
-
-    private Integer user;
-
-    private UUID user;
-
-    private Integer house;
-
 }

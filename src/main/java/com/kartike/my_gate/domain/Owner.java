@@ -43,22 +43,22 @@ public class Owner {
     @Column(nullable = false)
     private Long bankAccount;
 
-    @OneToMany(mappedBy = "owner")
-    private Set<Invoice> ownerInvoices;
+//    @OneToMany(mappedBy = "owner")
+//    private Set<Invoice> ownerInvoices;
+//
+//    @OneToMany(mappedBy = "user")
+//    private Set<UserState> userUserStates;
 
-    @OneToMany(mappedBy = "user")
-    private Set<UserState> userUserStates;
+//    @OneToMany(mappedBy = "user")
+//    private Set<GateLog> userGateLogs;
 
-    @OneToMany(mappedBy = "user")
-    private Set<GateLog> userGateLogs;
+//    @OneToMany(mappedBy = "owner")
+//    private Set<Layout> ownerLayouts;
 
-    @OneToMany(mappedBy = "owner")
-    private Set<Layout> ownerLayouts;
+//    @OneToMany(mappedBy = "owner")
+//    private Set<AmenityRequest> ownerAmenityRequests;
 
-    @OneToMany(mappedBy = "owner")
-    private Set<AmenityRequest> ownerAmenityRequests;
-
-    @OneToMany(mappedBy = "amenity")
-    private Set<Amenity> amenityAmenities;
+//    @OneToMany(mappedBy = "amenity")
+//    private Set<Amenity> amenityAmenities;
 
 }

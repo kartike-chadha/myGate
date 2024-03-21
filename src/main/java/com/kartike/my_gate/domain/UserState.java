@@ -36,19 +36,20 @@ public class UserState {
     )
     private Integer stateId;
 
-    @Column(nullable = false)
-    private UUID ownerId;
+//    Removed because adding reference with join columns which will handle the creation of fk field
+//    @Column(nullable = false)
+//    private UUID ownerId;
 
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     private UserStateEnum state;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id")
-    private Owner user;
+    @JoinColumn(name = "owner_user_id")
+    private Owner owner;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id")
-    private Vendor user;
+    @JoinColumn(name = "vendor_user_id")
+    private Vendor vendor;
 
 }

@@ -1,7 +1,7 @@
 package com.kartike.my_gate.rest;
 
 import com.kartike.my_gate.model.VendorDTO;
-import com.kartike.my_gate.service.VendorService;
+import com.kartike.my_gate.service.VendorServiceImpl;
 import com.kartike.my_gate.util.ReferencedException;
 import com.kartike.my_gate.util.ReferencedWarning;
 import jakarta.validation.Valid;
@@ -24,9 +24,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping(value = "/api/vendors", produces = MediaType.APPLICATION_JSON_VALUE)
 public class VendorResource {
 
-    private final VendorService vendorService;
+    private final VendorServiceImpl vendorService;
 
-    public VendorResource(final VendorService vendorService) {
+    public VendorResource(final VendorServiceImpl vendorService) {
         this.vendorService = vendorService;
     }
 

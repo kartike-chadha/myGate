@@ -11,20 +11,12 @@ import lombok.Setter;
 @Setter
 public class LayoutDTO {
 
-    private Integer id;
-
     @NotNull
-    @Size(max = 255)
-    private String blockId;
+    private Integer id;
 
     @NotNull
     private Integer houseNumber;
 
     @NotNull
-    private UUID ownerId;
-
-    private Integer block;
-
-    private Integer owner;
-
+    private String blockId;
 }

@@ -1,7 +1,7 @@
 package com.kartike.my_gate.rest;
 
 import com.kartike.my_gate.model.GateLogDTO;
-import com.kartike.my_gate.service.GateLogService;
+import com.kartike.my_gate.service.GateLogServiceImpl;
 import jakarta.validation.Valid;
 import java.util.List;
 import org.springframework.http.HttpStatus;
@@ -21,9 +21,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping(value = "/api/gateLogs", produces = MediaType.APPLICATION_JSON_VALUE)
 public class GateLogResource {
 
-    private final GateLogService gateLogService;
+    private final GateLogServiceImpl gateLogService;
 
-    public GateLogResource(final GateLogService gateLogService) {
+    public GateLogResource(final GateLogServiceImpl gateLogService) {
         this.gateLogService = gateLogService;
     }
 

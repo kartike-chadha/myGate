@@ -4,7 +4,7 @@ import static java.lang.annotation.ElementType.ANNOTATION_TYPE;
 import static java.lang.annotation.ElementType.FIELD;
 import static java.lang.annotation.ElementType.METHOD;
 
-import com.kartike.my_gate.service.OwnerService;
+import com.kartike.my_gate.service.OwnerServiceImpl;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Constraint;
 import jakarta.validation.ConstraintValidator;
@@ -37,10 +37,10 @@ public @interface OwnerEmailUnique {
 
     class OwnerEmailUniqueValidator implements ConstraintValidator<OwnerEmailUnique, String> {
 
-        private final OwnerService ownerService;
+        private final OwnerServiceImpl ownerService;
         private final HttpServletRequest request;
 
-        public OwnerEmailUniqueValidator(final OwnerService ownerService,
+        public OwnerEmailUniqueValidator(final OwnerServiceImpl ownerService,
                 final HttpServletRequest request) {
             this.ownerService = ownerService;
             this.request = request;

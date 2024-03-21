@@ -1,15 +1,15 @@
 spring:
   datasource:
-    url: ${JDBC_DATABASE_URL:jdbc:postgresql://localhost:5432/myGate}
-    username: ${JDBC_DATABASE_USERNAME:postgres}
-    password: ${JDBC_DATABASE_PASSWORD:<<YOUR_PASSWORD>>}
+    url: jdbc:postgresql://localhost:5432/mygate
+    username: kartike.chadha
+    password: password
     dbcp2:
       max-wait-millis: 30000
       validation-query: select 1
       validation-query-timeout: 30
   jpa:
     hibernate:
-      ddl-auto: validate
+      ddl-auto: update
     open-in-view: false
     properties:
       hibernate:
@@ -18,6 +18,8 @@ spring:
             non_contextual_creation: true
         id:
           new_generator_mappings: true
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+
 error:
   handling:
     http-status-in-json-response: true

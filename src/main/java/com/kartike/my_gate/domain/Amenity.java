@@ -41,11 +41,11 @@ public class Amenity {
     @OneToOne(mappedBy = "amenity", fetch = FetchType.LAZY)
     private Vendor amenityVendors;
 
-    @OneToMany(mappedBy = "requestedAmenity")
-    private Set<AmenityRequest> requestedAmenityAmenityRequests;
+//    @OneToMany(mappedBy = "requestedAmenity")
+//    private Set<AmenityRequest> requestedAmenityAmenityRequests;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "amenity_id")
-    private Owner amenity;
+    @JoinColumn(name = "amenity_owner_id")
+    private Owner amenityOwner;
 
 }

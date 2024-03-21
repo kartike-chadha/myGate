@@ -37,11 +37,12 @@ public class AmenityRequest {
     )
     private Integer requestId;
 
-    @Column(nullable = false)
-    private UUID ownerId;
-
-    @Column(nullable = false)
-    private Integer amenityRequested;
+//    Removed because adding reference with join columns which will handle the creation of fk field
+//    @Column(nullable = false)
+//    private UUID ownerId;
+//
+//    @Column(nullable = false)
+//    private Integer amenityRequested;
 
     @Column(nullable = false)
     private OffsetDateTime dateCreated;

@@ -15,7 +15,4 @@ public class AmenityDTO {
     @NotNull
     @Size(max = 255)
     private String amenityName;
-
-    private Integer amenity;
-
 }

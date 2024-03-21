@@ -33,17 +33,23 @@ public class Payable {
     )
     private Integer paymentId;
 
-    @Column(nullable = false)
-    private UUID ownerId;
+//    Removed because adding reference with join columns which will handle the creation of fk field
+//    @Column(nullable = false)
+//    private UUID ownerId;
 
     @Column(nullable = false)
     private Integer amountPaid;
 
-    @Column(nullable = false)
-    private Integer invoiceId;
+//    Removed because adding reference with join columns which will handle the creation of fk field
+//    @Column(nullable = false)
+//    private Integer invoiceId;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "invoice_id")
     private Invoice invoice;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "owner_id")
+    private Owner owner;
 
 }

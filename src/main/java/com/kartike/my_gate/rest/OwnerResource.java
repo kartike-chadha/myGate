@@ -1,7 +1,7 @@
 package com.kartike.my_gate.rest;
 
 import com.kartike.my_gate.model.OwnerDTO;
-import com.kartike.my_gate.service.OwnerService;
+import com.kartike.my_gate.service.OwnerServiceImpl;
 import com.kartike.my_gate.util.ReferencedException;
 import com.kartike.my_gate.util.ReferencedWarning;
 import jakarta.validation.Valid;
@@ -23,9 +23,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping(value = "/api/owners", produces = MediaType.APPLICATION_JSON_VALUE)
 public class OwnerResource {
 
-    private final OwnerService ownerService;
+    private final OwnerServiceImpl ownerService;
 
-    public OwnerResource(final OwnerService ownerService) {
+    public OwnerResource(final OwnerServiceImpl ownerService) {
         this.ownerService = ownerService;
     }
 

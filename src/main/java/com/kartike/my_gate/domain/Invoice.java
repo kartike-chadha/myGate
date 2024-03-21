@@ -36,8 +36,9 @@ public class Invoice {
     )
     private Integer invoiceId;
 
-    @Column(nullable = false)
-    private UUID ownerId;
+//    Removed because adding reference with join columns which will handle the creation of fk field
+//    @Column(nullable = false)
+//    private UUID ownerId;
 
     @Column(nullable = false)
     private Integer amount;
@@ -48,8 +49,8 @@ public class Invoice {
     @Column(nullable = false)
     private OffsetDateTime datePayable;
 
-    @OneToMany(mappedBy = "invoice")
-    private Set<Payable> invoicePayables;
+//    @OneToMany(mappedBy = "invoice")
+//    private Set<Payable> invoicePayables;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "owner_id")

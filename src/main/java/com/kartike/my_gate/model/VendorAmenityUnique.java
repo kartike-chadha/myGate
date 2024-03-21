@@ -4,7 +4,7 @@ import static java.lang.annotation.ElementType.ANNOTATION_TYPE;
 import static java.lang.annotation.ElementType.FIELD;
 import static java.lang.annotation.ElementType.METHOD;
 
-import com.kartike.my_gate.service.VendorService;
+import com.kartike.my_gate.service.VendorServiceImpl;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Constraint;
 import jakarta.validation.ConstraintValidator;
@@ -38,10 +38,10 @@ public @interface VendorAmenityUnique {
 
     class VendorAmenityUniqueValidator implements ConstraintValidator<VendorAmenityUnique, Long> {
 
-        private final VendorService vendorService;
+        private final VendorServiceImpl vendorService;
         private final HttpServletRequest request;
 
-        public VendorAmenityUniqueValidator(final VendorService vendorService,
+        public VendorAmenityUniqueValidator(final VendorServiceImpl vendorService,
                 final HttpServletRequest request) {
             this.vendorService = vendorService;
             this.request = request;
@@ -56,10 +56,7 @@ public @interface VendorAmenityUnique {
             @SuppressWarnings("unchecked") final Map<String, String> pathVariables =
                     ((Map<String, String>)request.getAttribute(HandlerMapping.URI_TEMPLATE_VARIABLES_ATTRIBUTE));
             final String currentId = pathVariables.get("vendorId");
-            if (currentId != null && value.equals(vendorService.get(UUID.fromString(currentId)).getAmenity())) {
-                // value hasn't changed
-                return true;
-            }
+
             return !vendorService.amenityExists(value);
         }
 

@@ -14,12 +14,6 @@ public class AmenityRequestDTO {
     private Integer requestId;
 
     @NotNull
-    private UUID ownerId;
-
-    @NotNull
-    private Integer amenityRequested;
-
-    @NotNull
     private OffsetDateTime dateCreated;
 
     @NotNull
@@ -31,8 +25,5 @@ public class AmenityRequestDTO {
     @NotNull
     private RequestStatusEnum requestStatus;
 
-    private Long requestedAmenity;
-
-    private Integer owner;
 
 }

@@ -1,7 +1,7 @@
 package com.kartike.my_gate.rest;
 
 import com.kartike.my_gate.model.UserStateDTO;
-import com.kartike.my_gate.service.UserStateService;
+import com.kartike.my_gate.service.UserStateServiceImpl;
 import jakarta.validation.Valid;
 import java.util.List;
 import org.springframework.http.HttpStatus;
@@ -21,9 +21,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping(value = "/api/userStates", produces = MediaType.APPLICATION_JSON_VALUE)
 public class UserStateResource {
 
-    private final UserStateService userStateService;
+    private final UserStateServiceImpl userStateService;
 
-    public UserStateResource(final UserStateService userStateService) {
+    public UserStateResource(final UserStateServiceImpl userStateService) {
         this.userStateService = userStateService;
     }
 

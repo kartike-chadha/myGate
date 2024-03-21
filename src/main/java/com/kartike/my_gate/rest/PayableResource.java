@@ -1,7 +1,7 @@
 package com.kartike.my_gate.rest;
 
 import com.kartike.my_gate.model.PayableDTO;
-import com.kartike.my_gate.service.PayableService;
+import com.kartike.my_gate.service.PayableServiceImpl;
 import jakarta.validation.Valid;
 import java.util.List;
 import org.springframework.http.HttpStatus;
@@ -21,9 +21,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping(value = "/api/payables", produces = MediaType.APPLICATION_JSON_VALUE)
 public class PayableResource {
 
-    private final PayableService payableService;
+    private final PayableServiceImpl payableService;
 
-    public PayableResource(final PayableService payableService) {
+    public PayableResource(final PayableServiceImpl payableService) {
         this.payableService = payableService;
     }
 

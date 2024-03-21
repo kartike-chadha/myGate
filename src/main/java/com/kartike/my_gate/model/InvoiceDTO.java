@@ -14,9 +14,6 @@ public class InvoiceDTO {
     private Integer invoiceId;
 
     @NotNull
-    private UUID ownerId;
-
-    @NotNull
     private Integer amount;
 
     @NotNull
@@ -24,7 +21,5 @@ public class InvoiceDTO {
 
     @NotNull
     private OffsetDateTime datePayable;
-
-    private Integer owner;
 
 }

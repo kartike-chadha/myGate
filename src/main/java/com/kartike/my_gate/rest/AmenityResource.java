@@ -1,7 +1,7 @@
 package com.kartike.my_gate.rest;
 
 import com.kartike.my_gate.model.AmenityDTO;
-import com.kartike.my_gate.service.AmenityService;
+import com.kartike.my_gate.service.AmenityServiceImpl;
 import com.kartike.my_gate.util.ReferencedException;
 import com.kartike.my_gate.util.ReferencedWarning;
 import jakarta.validation.Valid;
@@ -23,9 +23,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping(value = "/api/amenities", produces = MediaType.APPLICATION_JSON_VALUE)
 public class AmenityResource {
 
-    private final AmenityService amenityService;
+    private final AmenityServiceImpl amenityService;
 
-    public AmenityResource(final AmenityService amenityService) {
+    public AmenityResource(final AmenityServiceImpl amenityService) {
         this.amenityService = amenityService;
     }
 

@@ -9,9 +9,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface GateLogRepository extends JpaRepository<GateLog, Integer> {
 
-    GateLog findFirstByUser(Owner owner);
+    GateLog findFirstByOwner(Owner owner);
 
-    GateLog findFirstByUser(Vendor vendor);
+    GateLog findFirstByVendor(Vendor vendor);
 
     GateLog findFirstByHouse(Layout layout);
 

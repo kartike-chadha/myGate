@@ -1,7 +1,7 @@
 package com.kartike.my_gate.rest;
 
 import com.kartike.my_gate.model.LayoutDTO;
-import com.kartike.my_gate.service.LayoutService;
+import com.kartike.my_gate.service.LayoutServiceImpl;
 import com.kartike.my_gate.util.ReferencedException;
 import com.kartike.my_gate.util.ReferencedWarning;
 import jakarta.validation.Valid;
@@ -23,9 +23,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping(value = "/api/layouts", produces = MediaType.APPLICATION_JSON_VALUE)
 public class LayoutResource {
 
-    private final LayoutService layoutService;
+    private final LayoutServiceImpl layoutService;
 
-    public LayoutResource(final LayoutService layoutService) {
+    public LayoutResource(final LayoutServiceImpl layoutService) {
         this.layoutService = layoutService;
     }
 

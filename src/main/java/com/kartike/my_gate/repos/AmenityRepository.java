@@ -7,6 +7,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface AmenityRepository extends JpaRepository<Amenity, Long> {
 
-    Amenity findFirstByAmenity(Owner owner);
+    Amenity findFirstByAmenityOwner(Owner owner);
 
 }

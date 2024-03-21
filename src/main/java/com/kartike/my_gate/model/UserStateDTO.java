@@ -13,13 +13,7 @@ public class UserStateDTO {
     private Integer stateId;
 
     @NotNull
-    private UUID ownerId;
-
-    @NotNull
     private UserStateEnum state;
 
-    private Integer user;
-
-    private UUID user;
 
 }

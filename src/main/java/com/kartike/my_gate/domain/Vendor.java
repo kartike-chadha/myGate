@@ -29,17 +29,18 @@ public class Vendor {
     @Column(nullable = false)
     private String vendorName;
 
-    @Column(nullable = false)
-    private Integer amenityId;
+//    Removed because adding reference with join columns which will handle the creation of fk field
+//    @Column(nullable = false)
+//    private Integer amenityId;
 
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "amenity_id", nullable = false, unique = true)
     private Amenity amenity;
 
-    @OneToMany(mappedBy = "user")
-    private Set<UserState> userUserStates;
+//    @OneToMany(mappedBy = "user")
+//    private Set<UserState> userUserStates;
 
-    @OneToMany(mappedBy = "user")
-    private Set<GateLog> userGateLogs;
+//    @OneToMany(mappedBy = "user")
+//    private Set<GateLog> userGateLogs;
 
 }

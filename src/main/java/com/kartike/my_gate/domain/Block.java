@@ -34,7 +34,7 @@ public class Block {
     @Column(nullable = false)
     private String blockName;
 
-    @OneToMany(mappedBy = "block")
-    private Set<Layout> blockLayouts;
+//    @OneToMany(mappedBy = "block")
+//    private Set<Layout> blockLayouts;
 
 }

@@ -17,11 +17,4 @@ public class VendorDTO {
     @Size(max = 255)
     private String vendorName;
 
-    @NotNull
-    private Integer amenityId;
-
-    @NotNull
-    @VendorAmenityUnique
-    private Long amenity;
-
 }

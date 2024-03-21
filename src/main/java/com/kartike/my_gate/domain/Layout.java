@@ -35,14 +35,17 @@ public class Layout {
     )
     private Integer id;
 
-    @Column(nullable = false)
-    private String blockId;
+//    Removed because adding reference with join columns which will handle the creation of fk field
+//    @Column(nullable = false)
+//    private String blockId;
+
 
     @Column(nullable = false)
     private Integer houseNumber;
 
-    @Column(nullable = false)
-    private UUID ownerId;
+//    Removed because adding reference with join columns which will handle the creation of fk field
+//    @Column(nullable = false)
+//    private UUID ownerId;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "block_id")
@@ -52,7 +55,7 @@ public class Layout {
     @JoinColumn(name = "owner_id")
     private Owner owner;
 
-    @OneToMany(mappedBy = "house")
-    private Set<GateLog> houseGateLogs;
+//    @OneToMany(mappedBy = "house")
+//    private Set<GateLog> houseGateLogs;
 
 }

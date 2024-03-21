@@ -13,14 +13,6 @@ public class PayableDTO {
     private Integer paymentId;
 
     @NotNull
-    private UUID ownerId;
-
-    @NotNull
     private Integer amountPaid;
-
-    @NotNull
-    private Integer invoiceId;
-
-    private Integer invoice;
 
 }
