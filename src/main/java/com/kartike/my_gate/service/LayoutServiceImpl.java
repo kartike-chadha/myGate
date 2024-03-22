@@ -1,7 +1,9 @@
 package com.kartike.my_gate.service;
 
+import com.kartike.my_gate.domain.Block;
 import com.kartike.my_gate.domain.GateLog;
 import com.kartike.my_gate.domain.Layout;
+import com.kartike.my_gate.domain.Owner;
 import com.kartike.my_gate.model.LayoutDTO;
 import com.kartike.my_gate.repos.BlockRepository;
 import com.kartike.my_gate.repos.GateLogRepository;
@@ -44,7 +46,7 @@ public class LayoutServiceImpl implements LayoutService{
                 .orElseThrow(NotFoundException::new);
     }
     @Override
-    public Integer create(final LayoutDTO layoutDTO) {
+    public Integer createAndAssignLayout(final LayoutDTO layoutDTO) {
         final Layout layout = new Layout();
         mapToEntity(layoutDTO, layout);
         return layoutRepository.save(layout).getId();
@@ -63,11 +65,21 @@ public class LayoutServiceImpl implements LayoutService{
 
     private LayoutDTO mapToDTO(final Layout layout, final LayoutDTO layoutDTO) {
         layoutDTO.setId(layout.getId());
+        layoutDTO.setHouseNumber(layout.getHouseNumber());
+        layoutDTO.setBlockId(layout.getBlock().getBlockId());
+        layoutDTO.setOwnerId(layout.getOwner().getId());
         return layoutDTO;
     }
 
     private Layout mapToEntity(final LayoutDTO layoutDTO, final Layout layout) {
+        layout.setId(layoutDTO.getId());
         layout.setHouseNumber(layoutDTO.getHouseNumber());
+        Block block = blockRepository.findById(layoutDTO.getBlockId())
+                .orElseThrow(() -> new RuntimeException("Block not found"));
+        layout.setBlock(block);
+        Owner owner = ownerRepository.findById(layoutDTO.getOwnerId())
+                .orElseThrow(()->new RuntimeException("Owner not found"));
+        layout.setOwner(owner);
         return layout;
     }
 

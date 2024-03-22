@@ -1,5 +1,7 @@
 package com.kartike.my_gate.model;
 
+import jakarta.persistence.criteria.CriteriaBuilder;
+import jakarta.validation.Constraint;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import java.util.UUID;
@@ -11,12 +13,14 @@ import lombok.Setter;
 @Setter
 public class LayoutDTO {
 
-    @NotNull
     private Integer id;
 
     @NotNull
     private Integer houseNumber;
 
     @NotNull
-    private String blockId;
+    private Integer blockId;
+
+    @NotNull
+    private UUID ownerId;
 }

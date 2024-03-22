@@ -39,26 +39,26 @@ public class AmenityServiceImpl implements AmenityService{
                 .toList();
     }
     @Override
-    public AmenityDTO get(final Long id) {
+    public AmenityDTO get(final Integer id) {
         return amenityRepository.findById(id)
                 .map(amenity -> mapToDTO(amenity, new AmenityDTO()))
                 .orElseThrow(NotFoundException::new);
     }
     @Override
-    public Long create(final AmenityDTO amenityDTO) {
+    public Integer create(final AmenityDTO amenityDTO) {
         final Amenity amenity = new Amenity();
         mapToEntity(amenityDTO, amenity);
         return amenityRepository.save(amenity).getId();
     }
     @Override
-    public void update(final Long id, final AmenityDTO amenityDTO) {
+    public void update(final Integer id, final AmenityDTO amenityDTO) {
         final Amenity amenity = amenityRepository.findById(id)
                 .orElseThrow(NotFoundException::new);
         mapToEntity(amenityDTO, amenity);
         amenityRepository.save(amenity);
     }
     @Override
-    public void delete(final Long id) {
+    public void delete(final Integer id) {
         amenityRepository.deleteById(id);
     }
 
@@ -73,7 +73,7 @@ public class AmenityServiceImpl implements AmenityService{
         return amenity;
     }
 
-    public ReferencedWarning getReferencedWarning(final Long id) {
+    public ReferencedWarning getReferencedWarning(final Integer id) {
         final ReferencedWarning referencedWarning = new ReferencedWarning();
         final Amenity amenity = amenityRepository.findById(id)
                 .orElseThrow(NotFoundException::new);

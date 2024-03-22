@@ -18,6 +18,8 @@ import com.kartike.my_gate.repos.UserStateRepository;
 import com.kartike.my_gate.util.NotFoundException;
 import com.kartike.my_gate.util.ReferencedWarning;
 import java.util.List;
+import java.util.UUID;
+
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
@@ -55,26 +57,26 @@ public class OwnerServiceImpl implements OwnerService {
                 .toList();
     }
     @Override
-    public OwnerDTO get(final Integer id) {
+    public OwnerDTO get(final UUID id) {
         return ownerRepository.findById(id)
                 .map(owner -> mapToDTO(owner, new OwnerDTO()))
                 .orElseThrow(NotFoundException::new);
     }
     @Override
-    public Integer create(final OwnerDTO ownerDTO) {
+    public UUID create(final OwnerDTO ownerDTO) {
         final Owner owner = new Owner();
         mapToEntity(ownerDTO, owner);
         return ownerRepository.save(owner).getId();
     }
     @Override
-    public void update(final Integer id, final OwnerDTO ownerDTO) {
+    public void update(final UUID id, final OwnerDTO ownerDTO) {
         final Owner owner = ownerRepository.findById(id)
                 .orElseThrow(NotFoundException::new);
         mapToEntity(ownerDTO, owner);
         ownerRepository.save(owner);
     }
     @Override
-    public void delete(final Integer id) {
+    public void delete(final UUID id) {
         ownerRepository.deleteById(id);
     }
 
@@ -99,7 +101,7 @@ public class OwnerServiceImpl implements OwnerService {
         return ownerRepository.existsByEmailIgnoreCase(email);
     }
 
-    public ReferencedWarning getReferencedWarning(final Integer id) {
+    public ReferencedWarning getReferencedWarning(final UUID id) {
         final ReferencedWarning referencedWarning = new ReferencedWarning();
         final Owner owner = ownerRepository.findById(id)
                 .orElseThrow(NotFoundException::new);
@@ -133,12 +135,7 @@ public class OwnerServiceImpl implements OwnerService {
             referencedWarning.addParam(ownerAmenityRequest.getRequestId());
             return referencedWarning;
         }
-        final Amenity amenityAmenity = amenityRepository.findFirstByAmenityOwner(owner);
-        if (amenityAmenity != null) {
-            referencedWarning.setKey("owner.amenity.amenity.referenced");
-            referencedWarning.addParam(amenityAmenity.getId());
-            return referencedWarning;
-        }
+
         return null;
     }
 

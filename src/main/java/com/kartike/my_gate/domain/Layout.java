@@ -19,7 +19,7 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-public class Layout {
+public class  Layout {
 
     @Id
     @Column(nullable = false, updatable = false)

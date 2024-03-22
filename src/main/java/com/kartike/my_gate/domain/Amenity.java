@@ -33,7 +33,7 @@ public class Amenity {
             strategy = GenerationType.SEQUENCE,
             generator = "primary_sequence"
     )
-    private Long id;
+    private Integer id;
 
     @Column(nullable = false)
     private String amenityName;
@@ -44,8 +44,8 @@ public class Amenity {
 //    @OneToMany(mappedBy = "requestedAmenity")
 //    private Set<AmenityRequest> requestedAmenityAmenityRequests;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "amenity_owner_id")
-    private Owner amenityOwner;
+//    @ManyToOne(fetch = FetchType.LAZY)
+//    @JoinColumn(name = "amenity_owner_id")
+//    private Owner amenityOwner;
 
 }

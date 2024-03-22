@@ -36,7 +36,7 @@ public @interface VendorAmenityUnique {
 
     Class<? extends Payload>[] payload() default {};
 
-    class VendorAmenityUniqueValidator implements ConstraintValidator<VendorAmenityUnique, Long> {
+    class VendorAmenityUniqueValidator implements ConstraintValidator<VendorAmenityUnique, Integer> {
 
         private final VendorServiceImpl vendorService;
         private final HttpServletRequest request;
@@ -48,7 +48,7 @@ public @interface VendorAmenityUnique {
         }
 
         @Override
-        public boolean isValid(final Long value, final ConstraintValidatorContext cvContext) {
+        public boolean isValid(final Integer value, final ConstraintValidatorContext cvContext) {
             if (value == null) {
                 // no value present
                 return true;

@@ -6,8 +6,8 @@ import java.util.List;
 
 public interface AmenityService {
     public List<AmenityDTO> findAll();
-    public AmenityDTO get(Long id);
-    public Long create(AmenityDTO amenityDTO);
-    public void update(Long id, AmenityDTO amenityDTO);
-    public void delete(Long id);
+    public AmenityDTO get(Integer id);
+    public Integer create(AmenityDTO amenityDTO);
+    public void update(Integer id, AmenityDTO amenityDTO);
+    public void delete(Integer id);
 }

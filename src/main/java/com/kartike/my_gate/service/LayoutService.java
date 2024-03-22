@@ -8,7 +8,8 @@ public interface LayoutService {
 
     public List<LayoutDTO> findAll();
     public LayoutDTO get(Integer id);
-    public Integer create(LayoutDTO layoutDTO);
+    public Integer createAndAssignLayout(LayoutDTO layoutDTO);
+
     public void update(Integer id, LayoutDTO layoutDTO);
     public void delete(Integer id);
 }

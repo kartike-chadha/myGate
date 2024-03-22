@@ -64,6 +64,7 @@ public class GateLogServiceImpl implements GateLogService {
         gateLogDTO.setUserType(gateLog.getUserType());
         gateLogDTO.setLogType(gateLog.getLogType());
         gateLogDTO.setLogTime(gateLog.getLogTime());
+        if(gateLog.getUserType()==Us)
         return gateLogDTO;
     }
 

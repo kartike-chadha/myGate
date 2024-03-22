@@ -1,6 +1,6 @@
 package com.kartike.my_gate.domain;
 
-import com.kartike.my_gate.model.UserStateEnum;
+import com.kartike.my_gate.enums.UserStateEnum;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -12,7 +12,6 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.SequenceGenerator;
-import java.util.UUID;
 import lombok.Getter;
 import lombok.Setter;
 

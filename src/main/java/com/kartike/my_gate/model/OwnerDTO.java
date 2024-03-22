@@ -5,12 +5,14 @@ import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.UUID;
+
 
 @Getter
 @Setter
 public class OwnerDTO {
 
-    private Integer id;
+    private UUID id;
 
     @NotNull
     @Size(max = 255)
@@ -21,7 +23,6 @@ public class OwnerDTO {
 
     @NotNull
     @Size(max = 255)
-    @OwnerEmailUnique
     private String email;
 
     @NotNull

@@ -1,4 +1,4 @@
-package com.kartike.my_gate.model;
+package com.kartike.my_gate.enums;
 
 
 public enum LogTypeEnum {

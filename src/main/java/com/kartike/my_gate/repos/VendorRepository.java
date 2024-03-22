@@ -10,6 +10,6 @@ public interface VendorRepository extends JpaRepository<Vendor, UUID> {
 
     Vendor findFirstByAmenity(Amenity amenity);
 
-    boolean existsByAmenityId(Long id);
+    boolean existsByAmenityId(Integer id);
 
 }

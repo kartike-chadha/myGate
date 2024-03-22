@@ -41,7 +41,7 @@ public class LayoutResource {
 
     @PostMapping
     public ResponseEntity<Integer> createLayout(@RequestBody @Valid final LayoutDTO layoutDTO) {
-        final Integer createdId = layoutService.create(layoutDTO);
+        final Integer createdId = layoutService.createAndAssignLayout(layoutDTO);
         return new ResponseEntity<>(createdId, HttpStatus.CREATED);
     }
 

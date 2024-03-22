@@ -35,25 +35,25 @@ public class AmenityResource {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<AmenityDTO> getAmenity(@PathVariable(name = "id") final Long id) {
+    public ResponseEntity<AmenityDTO> getAmenity(@PathVariable(name = "id") final Integer id) {
         return ResponseEntity.ok(amenityService.get(id));
     }
 
     @PostMapping
-    public ResponseEntity<Long> createAmenity(@RequestBody @Valid final AmenityDTO amenityDTO) {
-        final Long createdId = amenityService.create(amenityDTO);
+    public ResponseEntity<Integer> createAmenity(@RequestBody @Valid final AmenityDTO amenityDTO) {
+        final Integer createdId = amenityService.create(amenityDTO);
         return new ResponseEntity<>(createdId, HttpStatus.CREATED);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Long> updateAmenity(@PathVariable(name = "id") final Long id,
+    public ResponseEntity<Integer> updateAmenity(@PathVariable(name = "id") final Integer id,
             @RequestBody @Valid final AmenityDTO amenityDTO) {
         amenityService.update(id, amenityDTO);
         return ResponseEntity.ok(id);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteAmenity(@PathVariable(name = "id") final Long id) {
+    public ResponseEntity<Void> deleteAmenity(@PathVariable(name = "id") final Integer id) {
         final ReferencedWarning referencedWarning = amenityService.getReferencedWarning(id);
         if (referencedWarning != null) {
             throw new ReferencedException(referencedWarning);

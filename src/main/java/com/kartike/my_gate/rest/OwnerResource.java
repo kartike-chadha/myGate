@@ -6,6 +6,8 @@ import com.kartike.my_gate.util.ReferencedException;
 import com.kartike.my_gate.util.ReferencedWarning;
 import jakarta.validation.Valid;
 import java.util.List;
+import java.util.UUID;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -35,25 +37,25 @@ public class OwnerResource {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<OwnerDTO> getOwner(@PathVariable(name = "id") final Integer id) {
+    public ResponseEntity<OwnerDTO> getOwner(@PathVariable(name = "id") final UUID id) {
         return ResponseEntity.ok(ownerService.get(id));
     }
 
     @PostMapping
-    public ResponseEntity<Integer> createOwner(@RequestBody @Valid final OwnerDTO ownerDTO) {
-        final Integer createdId = ownerService.create(ownerDTO);
+    public ResponseEntity<UUID> createOwner(@RequestBody @Valid final OwnerDTO ownerDTO) {
+        final UUID createdId = ownerService.create(ownerDTO);
         return new ResponseEntity<>(createdId, HttpStatus.CREATED);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Integer> updateOwner(@PathVariable(name = "id") final Integer id,
+    public ResponseEntity<UUID> updateOwner(@PathVariable(name = "id") final UUID id,
             @RequestBody @Valid final OwnerDTO ownerDTO) {
         ownerService.update(id, ownerDTO);
         return ResponseEntity.ok(id);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteOwner(@PathVariable(name = "id") final Integer id) {
+    public ResponseEntity<Void> deleteOwner(@PathVariable(name = "id") final UUID id) {
         final ReferencedWarning referencedWarning = ownerService.getReferencedWarning(id);
         if (referencedWarning != null) {
             throw new ReferencedException(referencedWarning);

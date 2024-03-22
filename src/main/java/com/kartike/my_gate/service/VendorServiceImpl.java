@@ -68,15 +68,21 @@ public class VendorServiceImpl implements VendorService{
     private VendorDTO mapToDTO(final Vendor vendor, final VendorDTO vendorDTO) {
         vendorDTO.setVendorId(vendor.getVendorId());
         vendorDTO.setVendorName(vendor.getVendorName());
+        Amenity amenity = amenityRepository.findById(vendor.getAmenity().getId())
+                .orElseThrow(()->new RuntimeException(""));
+        vendorDTO.setAmenityId(amenity.getId());
         return vendorDTO;
     }
 
     private Vendor mapToEntity(final VendorDTO vendorDTO, final Vendor vendor) {
         vendor.setVendorName(vendorDTO.getVendorName());
+        Amenity amenity = amenityRepository.findById(vendorDTO.getAmenityId())
+                .orElseThrow(()->new RuntimeException(""));
+        vendor.setAmenity(amenity);
         return vendor;
     }
 
-    public boolean amenityExists(final Long id) {
+    public boolean amenityExists(final Integer id) {
         return vendorRepository.existsByAmenityId(id);
     }
 
