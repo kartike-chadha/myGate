@@ -1,7 +1,6 @@
 package com.kartike.my_gate.domain;
 
 import com.kartike.my_gate.enums.LogTypeEnum;
-import com.kartike.my_gate.enums.UserStateEnum;
 import com.kartike.my_gate.enums.UserTypeEnum;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -15,10 +14,10 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.SequenceGenerator;
 import java.time.OffsetDateTime;
+import java.util.UUID;
 
 import lombok.Getter;
 import lombok.Setter;
-import org.hibernate.usertype.UserType;
 
 
 @Entity
@@ -58,15 +57,8 @@ public class GateLog {
     @Column(nullable = false)
     private OffsetDateTime logTime;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "owner_user_id")
-//    @Column(insertable = false, updatable = false)
-    private Owner owner;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "vendor_user_id")
-//    @Column(insertable = false, updatable = false)
-    private Vendor vendor;
+    @Column(nullable = false)
+    private UUID userId;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "house_id")

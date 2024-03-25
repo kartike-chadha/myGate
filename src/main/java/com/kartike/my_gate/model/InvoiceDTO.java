@@ -15,11 +15,12 @@ public class InvoiceDTO {
 
     @NotNull
     private Integer amount;
-
     @NotNull
+    private UUID ownerId;
+
+
     private OffsetDateTime dateCreated;
 
-    @NotNull
     private OffsetDateTime datePayable;
 
 }

@@ -1,6 +1,7 @@
 package com.kartike.my_gate.rest;
 
 import com.kartike.my_gate.model.InvoiceDTO;
+import com.kartike.my_gate.model.PaymentReconcileDTO;
 import com.kartike.my_gate.service.InvoiceServiceImpl;
 import com.kartike.my_gate.util.ReferencedException;
 import com.kartike.my_gate.util.ReferencedWarning;
@@ -46,22 +47,9 @@ public class InvoiceResource {
         return new ResponseEntity<>(createdInvoiceId, HttpStatus.CREATED);
     }
 
-    @PutMapping("/{invoiceId}")
-    public ResponseEntity<Integer> updateInvoice(
-            @PathVariable(name = "invoiceId") final Integer invoiceId,
-            @RequestBody @Valid final InvoiceDTO invoiceDTO) {
-        invoiceService.update(invoiceId, invoiceDTO);
-        return ResponseEntity.ok(invoiceId);
-    }
-
-    @DeleteMapping("/{invoiceId}")
-    public ResponseEntity<Void> deleteInvoice(
-            @PathVariable(name = "invoiceId") final Integer invoiceId) {
-        final ReferencedWarning referencedWarning = invoiceService.getReferencedWarning(invoiceId);
-        if (referencedWarning != null) {
-            throw new ReferencedException(referencedWarning);
-        }
-        invoiceService.delete(invoiceId);
+    @PostMapping("/reconcile")
+    public ResponseEntity<Void> reconcile(@RequestBody @Valid final PaymentReconcileDTO paymentReconcileDTO) {
+        invoiceService.reconcile(paymentReconcileDTO);
         return ResponseEntity.noContent().build();
     }
 

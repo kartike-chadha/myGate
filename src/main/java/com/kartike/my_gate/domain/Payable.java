@@ -9,9 +9,12 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.SequenceGenerator;
+
+import java.time.OffsetDateTime;
 import java.util.UUID;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.dialect.pagination.OffsetFetchLimitHandler;
 
 
 @Entity
@@ -39,6 +42,9 @@ public class Payable {
 
     @Column(nullable = false)
     private Integer amountPaid;
+
+    @Column(nullable = false)
+    private OffsetDateTime dateCreated;
 
 //    Removed because adding reference with join columns which will handle the creation of fk field
 //    @Column(nullable = false)

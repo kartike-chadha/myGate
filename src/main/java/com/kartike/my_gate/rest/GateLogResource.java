@@ -44,17 +44,4 @@ public class GateLogResource {
         return new ResponseEntity<>(createdLogId, HttpStatus.CREATED);
     }
 
-    @PutMapping("/{logId}")
-    public ResponseEntity<Integer> updateGateLog(@PathVariable(name = "logId") final Integer logId,
-            @RequestBody @Valid final GateLogDTO gateLogDTO) {
-        gateLogService.update(logId, gateLogDTO);
-        return ResponseEntity.ok(logId);
-    }
-
-    @DeleteMapping("/{logId}")
-    public ResponseEntity<Void> deleteGateLog(@PathVariable(name = "logId") final Integer logId) {
-        gateLogService.delete(logId);
-        return ResponseEntity.noContent().build();
-    }
-
 }

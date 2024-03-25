@@ -111,18 +111,6 @@ public class OwnerServiceImpl implements OwnerService {
             referencedWarning.addParam(ownerInvoice.getInvoiceId());
             return referencedWarning;
         }
-        final UserState userUserState = userStateRepository.findFirstByOwner(owner);
-        if (userUserState != null) {
-            referencedWarning.setKey("owner.userState.user.referenced");
-            referencedWarning.addParam(userUserState.getStateId());
-            return referencedWarning;
-        }
-        final GateLog userGateLog = gateLogRepository.findFirstByOwner(owner);
-        if (userGateLog != null) {
-            referencedWarning.setKey("owner.gateLog.user.referenced");
-            referencedWarning.addParam(userGateLog.getLogId());
-            return referencedWarning;
-        }
         final Layout ownerLayout = layoutRepository.findFirstByOwner(owner);
         if (ownerLayout != null) {
             referencedWarning.setKey("owner.layout.owner.referenced");

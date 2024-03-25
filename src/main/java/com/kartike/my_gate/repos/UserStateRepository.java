@@ -5,11 +5,10 @@ import com.kartike.my_gate.domain.UserState;
 import com.kartike.my_gate.domain.Vendor;
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import java.util.Optional;
+import java.util.UUID;
+
 
 public interface UserStateRepository extends JpaRepository<UserState, Integer> {
-
-    UserState findFirstByOwner(Owner owner);
-
-    UserState findFirstByVendor(Vendor vendor);
-
+    Optional<UserState> getByUserId(UUID userId);
 }

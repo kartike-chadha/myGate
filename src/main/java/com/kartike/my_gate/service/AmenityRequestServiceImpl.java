@@ -1,11 +1,15 @@
 package com.kartike.my_gate.service;
 
+import com.kartike.my_gate.domain.Amenity;
 import com.kartike.my_gate.domain.AmenityRequest;
+import com.kartike.my_gate.enums.RequestStatusEnum;
 import com.kartike.my_gate.model.AmenityRequestDTO;
 import com.kartike.my_gate.repos.AmenityRepository;
 import com.kartike.my_gate.repos.AmenityRequestRepository;
 import com.kartike.my_gate.repos.OwnerRepository;
 import com.kartike.my_gate.util.NotFoundException;
+
+import java.time.OffsetDateTime;
 import java.util.List;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
@@ -57,22 +61,33 @@ public class AmenityRequestServiceImpl implements AmenityRequestService{
         amenityRequestRepository.deleteById(requestId);
     }
 
+//    private OffsetDateTime getEta(OffsetDateTime createdTime){}
+
     private AmenityRequestDTO mapToDTO(final AmenityRequest amenityRequest,
             final AmenityRequestDTO amenityRequestDTO) {
         amenityRequestDTO.setRequestId(amenityRequest.getRequestId());
         amenityRequestDTO.setDateCreated(amenityRequest.getDateCreated());
         amenityRequestDTO.setEta(amenityRequest.getEta());
-        amenityRequestDTO.setScheduledDate(amenityRequest.getScheduledDate());
         amenityRequestDTO.setRequestStatus(amenityRequest.getRequestStatus());
+        amenityRequestDTO.setRequestedAmenity(amenityRequest.getRequestedAmenity().getId());
+        amenityRequestDTO.setOwnerId(amenityRequest.getOwner().getId());
         return amenityRequestDTO;
     }
 
     private AmenityRequest mapToEntity(final AmenityRequestDTO amenityRequestDTO,
             final AmenityRequest amenityRequest) {
-        amenityRequest.setDateCreated(amenityRequestDTO.getDateCreated());
-        amenityRequest.setEta(amenityRequestDTO.getEta());
-        amenityRequest.setScheduledDate(amenityRequestDTO.getScheduledDate());
+        amenityRequest.setDateCreated(OffsetDateTime.now());
+        amenityRequest.setEta(OffsetDateTime.now().plusDays(amenityRequestRepository.countByAmenityIdAndAmenityStatusNotEqualTo(
+                amenityRepository.findById(amenityRequestDTO.getRequestedAmenity())
+                        .orElseThrow(()->new RuntimeException("Amenity doesn't exist")),
+                RequestStatusEnum.COMPLETED
+        ).longValue()));
         amenityRequest.setRequestStatus(amenityRequestDTO.getRequestStatus());
+        Amenity requestedAmenity = amenityRepository.findById(amenityRequestDTO.getRequestedAmenity())
+                .orElseThrow(()-> new RuntimeException("Amenity not found"));
+        amenityRequest.setRequestedAmenity(requestedAmenity);
+        amenityRequest.setOwner(ownerRepository.findById(amenityRequestDTO.getOwnerId())
+                .orElseThrow(()-> new RuntimeException("User Not found")));
         return amenityRequest;
     }
 

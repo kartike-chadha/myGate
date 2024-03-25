@@ -1,6 +1,6 @@
 package com.kartike.my_gate.model;
 
-import com.kartike.my_gate.enums.UserStateEnum;
+import com.kartike.my_gate.enums.LogTypeEnum;
 import jakarta.validation.constraints.NotNull;
 import java.util.UUID;
 import lombok.Getter;
@@ -14,11 +14,10 @@ public class UserStateDTO {
     private Integer stateId;
 
     @NotNull
-    private UserStateEnum state;
+    private LogTypeEnum state;
 
-    private UUID ownerId;
-
-    private UUID vendorId;
+    @NotNull
+    private UUID userId;
 
 
 }

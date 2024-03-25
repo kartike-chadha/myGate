@@ -90,18 +90,6 @@ public class VendorServiceImpl implements VendorService{
         final ReferencedWarning referencedWarning = new ReferencedWarning();
         final Vendor vendor = vendorRepository.findById(vendorId)
                 .orElseThrow(NotFoundException::new);
-        final UserState userUserState = userStateRepository.findFirstByVendor(vendor);
-        if (userUserState != null) {
-            referencedWarning.setKey("vendor.userState.user.referenced");
-            referencedWarning.addParam(userUserState.getStateId());
-            return referencedWarning;
-        }
-        final GateLog userGateLog = gateLogRepository.findFirstByVendor(vendor);
-        if (userGateLog != null) {
-            referencedWarning.setKey("vendor.gateLog.user.referenced");
-            referencedWarning.addParam(userGateLog.getLogId());
-            return referencedWarning;
-        }
         return null;
     }
 

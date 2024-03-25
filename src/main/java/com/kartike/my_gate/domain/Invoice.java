@@ -10,6 +10,8 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.SequenceGenerator;
+
+import java.sql.Timestamp;
 import java.time.OffsetDateTime;
 import java.util.Set;
 import java.util.UUID;
@@ -48,6 +50,8 @@ public class Invoice {
 
     @Column(nullable = false)
     private OffsetDateTime datePayable;
+
+    private Timestamp timestamp;
 
 //    @OneToMany(mappedBy = "invoice")
 //    private Set<Payable> invoicePayables;

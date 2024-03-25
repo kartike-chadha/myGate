@@ -3,12 +3,15 @@ package com.kartike.my_gate.service;
 import com.kartike.my_gate.domain.Owner;
 import com.kartike.my_gate.domain.UserState;
 import com.kartike.my_gate.domain.Vendor;
+import com.kartike.my_gate.model.GateLogDTO;
 import com.kartike.my_gate.model.UserStateDTO;
 import com.kartike.my_gate.repos.OwnerRepository;
 import com.kartike.my_gate.repos.UserStateRepository;
 import com.kartike.my_gate.repos.VendorRepository;
 import com.kartike.my_gate.util.NotFoundException;
 import java.util.List;
+
+import org.apache.catalina.User;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
@@ -60,30 +63,15 @@ public class UserStateServiceImpl implements UserStateService{
     private UserStateDTO mapToDTO(final UserState userState, final UserStateDTO userStateDTO) {
         userStateDTO.setStateId(userState.getStateId());
         userStateDTO.setState(userState.getState());
-        if(userState.getOwner().getId()!=null){
-            Owner owner = ownerRepository.findById(userState.getOwner().getId())
-                    .orElseThrow(()->new RuntimeException("Owner doesn't exist"));
-            userStateDTO.setOwnerId(owner.getId());
-        }
-        if(userState.getVendor().getVendorId()!=null){
-            Vendor vendor = vendorRepository.findById(userState.getVendor().getVendorId())
-                    .orElseThrow(()->new RuntimeException("Vendor doesn't exist"));
-            userStateDTO.setVendorId(vendor.getVendorId());
-        }
+        userStateDTO.setUserId(userState.getUserId());
         return userStateDTO;
     }
 
     private UserState mapToEntity(final UserStateDTO userStateDTO, final UserState userState) {
         userState.setState(userStateDTO.getState());
-        if(userStateDTO.getOwnerId()!=null){
-            Owner owner = ownerRepository.findById(userStateDTO.getOwnerId())
-                    .orElseThrow(()->new RuntimeException("Owner doesn't exist"));
-            userState.setOwner(owner);
-        } else if (userStateDTO.getVendorId()!=null) {
-            Vendor vendor = vendorRepository.findById(userStateDTO.getVendorId())
-                    .orElseThrow(()->new RuntimeException("Vendor doesn't exist"));
-        }
+        userState.setUserId(userStateDTO.getUserId());
         return userState;
     }
+
 
 }
