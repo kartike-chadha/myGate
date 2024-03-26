@@ -1,0 +1,14 @@
+syntax = "proto3";
+import "google/protobuf/empty.proto";
+package com.kartike.my_gate;
+option java_multiple_files = true;
+
+message PaymentReconcileDTO{
+  int32 invoiceAmount = 1;
+  int32 penalty = 2;
+  string payableAfter = 3;
+}
+
+service PaymentReconcileService{
+  rpc reconcile(PaymentReconcileDTO) returns (google.protobuf.Empty);
+}
