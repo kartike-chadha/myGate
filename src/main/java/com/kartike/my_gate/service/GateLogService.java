@@ -1,7 +1,7 @@
 package com.kartike.my_gate.service;
 
 import com.kartike.my_gate.model.GateLogDTO;
-import jakarta.persistence.criteria.CriteriaBuilder;
+import javax.persistence.*;
 
 import java.util.List;
 

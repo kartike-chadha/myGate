@@ -1,12 +1,10 @@
 package com.kartike.my_gate.model;
 
-import jakarta.persistence.criteria.CriteriaBuilder;
-import jakarta.validation.Constraint;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
-import java.util.UUID;
 import lombok.Getter;
 import lombok.Setter;
+
+import javax.validation.constraints.NotNull;
+import java.util.UUID;
 
 
 @Getter
