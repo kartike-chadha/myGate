@@ -1,12 +1,13 @@
 spring:
+
   datasource:
     url: jdbc:postgresql://localhost:5432/mygate
     username: kartike.chadha
     password: password
-    dbcp2:
-      max-wait-millis: 30000
-      validation-query: select 1
-      validation-query-timeout: 30
+#    dbcp2:
+#      max-wait-millis: 30000
+#      validation-query: select 1
+#      validation-query-timeout: 30
   jpa:
     hibernate:
       ddl-auto: update
@@ -20,13 +21,28 @@ spring:
           new_generator_mappings: true
     database-platform: org.hibernate.dialect.PostgreSQLDialect
 
-error:
-  handling:
-    http-status-in-json-response: true
-    exception-logging: NO_LOGGING
-    full-stacktrace-http-statuses: 5xx
-    log-levels:
-      5xx: ERROR
-    codes:
-      VendorAmenityUnique: VENDOR_AMENITY_UNIQUE
-      OwnerEmailUnique: OWNER_EMAIL_UNIQUE
+
+#error:
+#  handling:
+#    http-status-in-json-response: true
+#    exception-logging: NO_LOGGING
+#    full-stacktrace-http-statuses: 5xx
+#    log-levels:
+#      5xx: ERROR
+#    codes:
+#      VendorAmenityUnique: VENDOR_AMENITY_UNIQUE
+#      OwnerEmailUnique: OWNER_EMAIL_UNIQUE
+#grpc:
+#
+#  server:
+#    port: 9090
+grpc:
+  server:
+    enableKeepAlive: true
+    keepAliveTime: PT1M
+    keepAliveWithoutCalls: true
+    permitKeepAliveTime: PT1M
+    permitKeepAliveWithoutCalls: true
+    port: 8090
+    shutdownGracePeriod: -1
+

@@ -8,7 +8,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class MyGateApplication {
 
     public static void main(final String[] args) {
-        SpringApplication.run(MyGateApplication.class, args);
+
+        var temp = SpringApplication.run(MyGateApplication.class, args);
+//        temp.getBean("PaymentReconcileServiceImp");
     }
 
 }

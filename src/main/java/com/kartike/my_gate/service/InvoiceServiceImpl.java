@@ -1,6 +1,5 @@
 package com.kartike.my_gate.service;
 
-import ch.qos.logback.classic.spi.ILoggingEvent;
 import com.kartike.my_gate.domain.Invoice;
 import com.kartike.my_gate.domain.Payable;
 import com.kartike.my_gate.model.InvoiceDTO;
@@ -13,23 +12,20 @@ import com.kartike.my_gate.util.ReferencedWarning;
 
 import java.time.OffsetDateTime;
 import java.util.List;
+
+import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 
 @Service
+@AllArgsConstructor
 public class InvoiceServiceImpl implements InvoiceService{
 
     private final InvoiceRepository invoiceRepository;
     private final OwnerRepository ownerRepository;
     private final PayableRepository payableRepository;
 
-    public InvoiceServiceImpl(final InvoiceRepository invoiceRepository,
-                              final OwnerRepository ownerRepository, final PayableRepository payableRepository) {
-        this.invoiceRepository = invoiceRepository;
-        this.ownerRepository = ownerRepository;
-        this.payableRepository = payableRepository;
-    }
     @Override
     public List<InvoiceDTO> findAll() {
         final List<Invoice> invoices = invoiceRepository.findAll(Sort.by("invoiceId"));
@@ -82,7 +78,8 @@ public class InvoiceServiceImpl implements InvoiceService{
         invoiceRepository.deleteById(invoiceId);
     }
 
-    private InvoiceDTO mapToDTO(final Invoice invoice, final InvoiceDTO invoiceDTO) {
+    @Override
+    public InvoiceDTO mapToDTO(final Invoice invoice, final InvoiceDTO invoiceDTO) {
         invoiceDTO.setInvoiceId(invoice.getInvoiceId());
         invoiceDTO.setAmount(invoice.getAmount());
         invoiceDTO.setDateCreated(invoice.getDateCreated());
@@ -91,7 +88,8 @@ public class InvoiceServiceImpl implements InvoiceService{
         return invoiceDTO;
     }
 
-    private Invoice mapToEntity(final InvoiceDTO invoiceDTO, final Invoice invoice) {
+    @Override
+    public Invoice mapToEntity(final InvoiceDTO invoiceDTO, final Invoice invoice) {
         invoice.setAmount(invoiceDTO.getAmount());
         invoice.setDateCreated(OffsetDateTime.now());
         invoice.setDatePayable(OffsetDateTime.now().plusDays(30));
