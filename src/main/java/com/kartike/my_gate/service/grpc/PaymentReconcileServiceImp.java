@@ -1,4 +1,6 @@
-package com.kartike.my_gate.service;
+package com.kartike.my_gate.service.grpc;
+
+import com.google.protobuf.Empty;
 import com.kartike.my_gate.PaymentReconcileDTO;
 import com.kartike.my_gate.PaymentReconcileServiceGrpc;
 import com.kartike.my_gate.domain.Invoice;
@@ -6,8 +8,8 @@ import com.kartike.my_gate.domain.Payable;
 import com.kartike.my_gate.model.InvoiceDTO;
 import com.kartike.my_gate.repos.InvoiceRepository;
 import com.kartike.my_gate.repos.PayableRepository;
+import com.kartike.my_gate.service.interfaces.InvoiceService;
 import lombok.RequiredArgsConstructor;
-import com.google.protobuf.Empty;
 import net.devh.boot.grpc.server.service.GrpcService;
 
 import java.time.OffsetDateTime;
@@ -28,16 +30,17 @@ public class PaymentReconcileServiceImp extends PaymentReconcileServiceGrpc.Paym
                             .stream()
                             .mapToInt(Payable::getAmountPaid)
                             .sum();
-                    if(totalPayment<paymentReconcileDTO.getInvoiceAmount()){
-                        Integer remainingAmount = paymentReconcileDTO.getInvoiceAmount()-totalPayment;
-                        Integer newAmountWithPenalty = remainingAmount + paymentReconcileDTO.getInvoiceAmount()+paymentReconcileDTO.getPenalty();
-                        InvoiceDTO newInvoiceDTO = new InvoiceDTO();
-                        newInvoiceDTO.setAmount(newAmountWithPenalty);
-                        newInvoiceDTO.setOwnerId(invoice.getOwner().getId());
-                        final Invoice newInvoice = new Invoice();
-                        invoiceService.mapToEntity(newInvoiceDTO,newInvoice);
-                        invoiceRepository.save(newInvoice);
-                    }
+
+                    Integer remainingAmount = paymentReconcileDTO.getInvoiceAmount()-totalPayment;
+                    Integer newAmountWithPenalty = remainingAmount + paymentReconcileDTO.getInvoiceAmount()+(paymentReconcileDTO.getPenalty()*remainingAmount)/paymentReconcileDTO.getInvoiceAmount();
+                    InvoiceDTO newInvoiceDTO = InvoiceDTO.builder()
+                            .amount(newAmountWithPenalty)
+                            .ownerId(invoice.getOwner().getId())
+                            .build();
+                    final Invoice newInvoice = new Invoice();
+                    invoiceService.mapToEntity(newInvoiceDTO,newInvoice);
+                    invoiceRepository.save(newInvoice);
+
                 }
         );
         responseObserver.onNext(Empty.getDefaultInstance());

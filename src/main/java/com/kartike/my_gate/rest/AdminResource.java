@@ -1,7 +1,7 @@
 package com.kartike.my_gate.rest;
 
 import com.kartike.my_gate.model.AdminDTO;
-import com.kartike.my_gate.service.AdminServiceImpl;
+import com.kartike.my_gate.service.implementations.AdminServiceImpl;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;

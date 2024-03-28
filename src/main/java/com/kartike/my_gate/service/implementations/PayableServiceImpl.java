@@ -1,10 +1,11 @@
-package com.kartike.my_gate.service;
+package com.kartike.my_gate.service.implementations;
 
 import com.kartike.my_gate.domain.Payable;
 import com.kartike.my_gate.model.PayableDTO;
 import com.kartike.my_gate.repos.InvoiceRepository;
 import com.kartike.my_gate.repos.OwnerRepository;
 import com.kartike.my_gate.repos.PayableRepository;
+import com.kartike.my_gate.service.interfaces.PayableService;
 import com.kartike.my_gate.util.NotFoundException;
 
 import java.time.OffsetDateTime;
@@ -17,7 +18,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 @AllArgsConstructor
-public class PayableServiceImpl implements PayableService{
+public class PayableServiceImpl implements PayableService {
 
     private final PayableRepository payableRepository;
     private final InvoiceRepository invoiceRepository;

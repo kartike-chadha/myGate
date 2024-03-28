@@ -1,4 +1,4 @@
-package com.kartike.my_gate.service;
+package com.kartike.my_gate.service.implementations;
 
 import com.kartike.my_gate.domain.Invoice;
 import com.kartike.my_gate.domain.Payable;
@@ -7,6 +7,7 @@ import com.kartike.my_gate.model.PaymentReconcileDTO;
 import com.kartike.my_gate.repos.InvoiceRepository;
 import com.kartike.my_gate.repos.OwnerRepository;
 import com.kartike.my_gate.repos.PayableRepository;
+import com.kartike.my_gate.service.interfaces.InvoiceService;
 import com.kartike.my_gate.util.NotFoundException;
 import com.kartike.my_gate.util.ReferencedWarning;
 
@@ -20,7 +21,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 @AllArgsConstructor
-public class InvoiceServiceImpl implements InvoiceService{
+public class InvoiceServiceImpl implements InvoiceService {
 
     private final InvoiceRepository invoiceRepository;
     private final OwnerRepository ownerRepository;

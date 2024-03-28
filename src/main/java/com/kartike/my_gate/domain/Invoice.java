@@ -1,13 +1,11 @@
 package com.kartike.my_gate.domain;
 
 
+import lombok.*;
+
 import javax.persistence.*;
 import java.sql.Timestamp;
 import java.time.OffsetDateTime;
-import java.util.Set;
-import java.util.UUID;
-import lombok.Getter;
-import lombok.Setter;
 
 
 @Entity

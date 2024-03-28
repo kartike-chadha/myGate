@@ -2,7 +2,7 @@ package com.kartike.my_gate.rest;
 
 import com.kartike.my_gate.model.InvoiceDTO;
 import com.kartike.my_gate.model.PaymentReconcileDTO;
-import com.kartike.my_gate.service.InvoiceServiceImpl;
+import com.kartike.my_gate.service.implementations.InvoiceServiceImpl;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;

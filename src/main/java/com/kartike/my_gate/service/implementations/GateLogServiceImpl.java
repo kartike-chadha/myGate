@@ -1,4 +1,4 @@
-package com.kartike.my_gate.service;
+package com.kartike.my_gate.service.implementations;
 
 import com.kartike.my_gate.domain.GateLog;
 import com.kartike.my_gate.domain.Layout;
@@ -6,14 +6,13 @@ import com.kartike.my_gate.domain.UserState;
 import com.kartike.my_gate.enums.LogTypeEnum;
 import com.kartike.my_gate.model.GateLogDTO;
 import com.kartike.my_gate.repos.*;
+import com.kartike.my_gate.service.interfaces.GateLogService;
 import com.kartike.my_gate.util.NotFoundException;
 
 import java.time.OffsetDateTime;
 import java.util.List;
-import java.util.Optional;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 

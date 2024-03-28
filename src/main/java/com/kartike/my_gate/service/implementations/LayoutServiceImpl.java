@@ -1,4 +1,4 @@
-package com.kartike.my_gate.service;
+package com.kartike.my_gate.service.implementations;
 
 import com.kartike.my_gate.domain.Block;
 import com.kartike.my_gate.domain.GateLog;
@@ -9,15 +9,17 @@ import com.kartike.my_gate.repos.BlockRepository;
 import com.kartike.my_gate.repos.GateLogRepository;
 import com.kartike.my_gate.repos.LayoutRepository;
 import com.kartike.my_gate.repos.OwnerRepository;
+import com.kartike.my_gate.service.interfaces.LayoutService;
 import com.kartike.my_gate.util.NotFoundException;
 import com.kartike.my_gate.util.ReferencedWarning;
-import java.util.List;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 
 @Service
-public class LayoutServiceImpl implements LayoutService{
+public class LayoutServiceImpl implements LayoutService {
 
     private final LayoutRepository layoutRepository;
     private final BlockRepository blockRepository;

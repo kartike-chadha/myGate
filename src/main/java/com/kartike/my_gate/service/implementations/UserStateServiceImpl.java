@@ -1,23 +1,20 @@
-package com.kartike.my_gate.service;
+package com.kartike.my_gate.service.implementations;
 
-import com.kartike.my_gate.domain.Owner;
 import com.kartike.my_gate.domain.UserState;
-import com.kartike.my_gate.domain.Vendor;
-import com.kartike.my_gate.model.GateLogDTO;
 import com.kartike.my_gate.model.UserStateDTO;
 import com.kartike.my_gate.repos.OwnerRepository;
 import com.kartike.my_gate.repos.UserStateRepository;
 import com.kartike.my_gate.repos.VendorRepository;
+import com.kartike.my_gate.service.interfaces.UserStateService;
 import com.kartike.my_gate.util.NotFoundException;
 import java.util.List;
 
-import org.apache.catalina.User;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 
 @Service
-public class UserStateServiceImpl implements UserStateService{
+public class UserStateServiceImpl implements UserStateService {
 
     private final UserStateRepository userStateRepository;
     private final OwnerRepository ownerRepository;

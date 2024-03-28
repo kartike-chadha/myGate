@@ -1,7 +1,7 @@
 package com.kartike.my_gate.rest;
 
 import com.kartike.my_gate.model.AmenityDTO;
-import com.kartike.my_gate.service.AmenityServiceImpl;
+import com.kartike.my_gate.service.implementations.AmenityServiceImpl;
 import com.kartike.my_gate.util.ReferencedException;
 import com.kartike.my_gate.util.ReferencedWarning;
 import org.springframework.http.HttpStatus;

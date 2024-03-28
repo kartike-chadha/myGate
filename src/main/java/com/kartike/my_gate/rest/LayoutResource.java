@@ -1,7 +1,7 @@
 package com.kartike.my_gate.rest;
 
 import com.kartike.my_gate.model.LayoutDTO;
-import com.kartike.my_gate.service.LayoutServiceImpl;
+import com.kartike.my_gate.service.implementations.LayoutServiceImpl;
 import com.kartike.my_gate.util.ReferencedException;
 import com.kartike.my_gate.util.ReferencedWarning;
 import org.springframework.http.HttpStatus;

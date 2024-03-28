@@ -1,0 +1,20 @@
+syntax = "proto3";
+package com.kartike.my_gate;
+option java_multiple_files = true;
+
+message Suspect{
+  string userName = 1;
+  string userId = 2;
+}
+
+message SuspectsList{
+  repeated Suspect suspectList = 1;
+}
+message TimeRange{
+  string startDateTime = 1;
+  string endDateTime = 2;
+}
+
+service SuspectService{
+  rpc getSuspectList(TimeRange) returns (SuspectsList);
+}

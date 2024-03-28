@@ -1,7 +1,7 @@
 package com.kartike.my_gate.rest;
 
 import com.kartike.my_gate.model.AmenityRequestDTO;
-import com.kartike.my_gate.service.AmenityRequestServiceImpl;
+import com.kartike.my_gate.service.implementations.AmenityRequestServiceImpl;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;

@@ -1,4 +1,4 @@
-package com.kartike.my_gate.service;
+package com.kartike.my_gate.service.interfaces;
 
 import com.kartike.my_gate.model.PayableDTO;
 

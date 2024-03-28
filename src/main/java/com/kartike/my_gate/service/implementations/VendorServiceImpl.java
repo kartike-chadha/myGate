@@ -1,14 +1,13 @@
-package com.kartike.my_gate.service;
+package com.kartike.my_gate.service.implementations;
 
 import com.kartike.my_gate.domain.Amenity;
-import com.kartike.my_gate.domain.GateLog;
-import com.kartike.my_gate.domain.UserState;
 import com.kartike.my_gate.domain.Vendor;
 import com.kartike.my_gate.model.VendorDTO;
 import com.kartike.my_gate.repos.AmenityRepository;
 import com.kartike.my_gate.repos.GateLogRepository;
 import com.kartike.my_gate.repos.UserStateRepository;
 import com.kartike.my_gate.repos.VendorRepository;
+import com.kartike.my_gate.service.interfaces.VendorService;
 import com.kartike.my_gate.util.NotFoundException;
 import com.kartike.my_gate.util.ReferencedWarning;
 import java.util.List;
@@ -18,7 +17,7 @@ import org.springframework.stereotype.Service;
 
 
 @Service
-public class VendorServiceImpl implements VendorService{
+public class VendorServiceImpl implements VendorService {
 
     private final VendorRepository vendorRepository;
     private final AmenityRepository amenityRepository;

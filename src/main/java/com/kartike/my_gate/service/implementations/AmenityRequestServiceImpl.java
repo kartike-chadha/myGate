@@ -1,4 +1,4 @@
-package com.kartike.my_gate.service;
+package com.kartike.my_gate.service.implementations;
 
 import com.kartike.my_gate.domain.Amenity;
 import com.kartike.my_gate.domain.AmenityRequest;
@@ -7,6 +7,7 @@ import com.kartike.my_gate.model.AmenityRequestDTO;
 import com.kartike.my_gate.repos.AmenityRepository;
 import com.kartike.my_gate.repos.AmenityRequestRepository;
 import com.kartike.my_gate.repos.OwnerRepository;
+import com.kartike.my_gate.service.interfaces.AmenityRequestService;
 import com.kartike.my_gate.util.NotFoundException;
 
 import java.time.OffsetDateTime;
@@ -16,7 +17,7 @@ import org.springframework.stereotype.Service;
 
 
 @Service
-public class AmenityRequestServiceImpl implements AmenityRequestService{
+public class AmenityRequestServiceImpl implements AmenityRequestService {
 
     private final AmenityRequestRepository amenityRequestRepository;
     private final AmenityRepository amenityRepository;

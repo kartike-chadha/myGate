@@ -1,10 +1,11 @@
-package com.kartike.my_gate.service;
+package com.kartike.my_gate.service.implementations;
 
 import com.kartike.my_gate.domain.Block;
 import com.kartike.my_gate.domain.Layout;
 import com.kartike.my_gate.model.BlockDTO;
 import com.kartike.my_gate.repos.BlockRepository;
 import com.kartike.my_gate.repos.LayoutRepository;
+import com.kartike.my_gate.service.interfaces.BlockService;
 import com.kartike.my_gate.util.NotFoundException;
 import com.kartike.my_gate.util.ReferencedWarning;
 import java.util.List;
@@ -13,7 +14,7 @@ import org.springframework.stereotype.Service;
 
 
 @Service
-public class BlockServiceImpl implements BlockService{
+public class BlockServiceImpl implements BlockService {
 
     private final BlockRepository blockRepository;
     private final LayoutRepository layoutRepository;

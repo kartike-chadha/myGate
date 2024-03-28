@@ -1,8 +1,9 @@
-package com.kartike.my_gate.service;
+package com.kartike.my_gate.service.implementations;
 
 import com.kartike.my_gate.domain.Admin;
 import com.kartike.my_gate.model.AdminDTO;
 import com.kartike.my_gate.repos.AdminRepository;
+import com.kartike.my_gate.service.interfaces.AdminService;
 import com.kartike.my_gate.util.NotFoundException;
 import java.util.List;
 import java.util.UUID;
@@ -11,7 +12,7 @@ import org.springframework.stereotype.Service;
 
 
 @Service
-public class AdminServiceImpl implements AdminService{
+public class AdminServiceImpl implements AdminService {
 
     private final AdminRepository adminRepository;
 
