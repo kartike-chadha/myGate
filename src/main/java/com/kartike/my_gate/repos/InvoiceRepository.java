@@ -19,8 +19,7 @@ public interface InvoiceRepository extends JpaRepository<Invoice, Integer> {
     List<Invoice> findAllByDatePayableAfter(@Param("payableAfter") OffsetDateTime payableAfter);
     Optional<Invoice> findByDatePayable(OffsetDateTime payableAfter);
 
-
-    @Query("select inv.owner.id as defaulterId, count(inv.amount) as numberOfDefaults from Invoice inv where inv.amount>:amountPayable group by inv.owner")
+    @Query("select inv.owner.id as defaulterId, count(inv.amount) as numberOfDefaults from Invoice inv group by inv.owner having count(inv.amount) = (select max(c) from (select count(inv.amount) as c from Invoice inv where inv.amount>:amountPayable group by inv.owner) as max_counts)")
     List<DefaulterDetails> findMostDefaults(@Param("amountPayable") Integer amountPayable);
 
 }
