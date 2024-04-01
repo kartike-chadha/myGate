@@ -39,6 +39,7 @@ public class AmenityRequestResource {
         return new ResponseEntity<>(createdRequestId, HttpStatus.CREATED);
     }
 
+
     @PutMapping("/{requestId}")
     public ResponseEntity<Integer> updateAmenityRequest(
             @PathVariable(name = "requestId") final Integer requestId,

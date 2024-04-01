@@ -31,7 +31,7 @@ public class PaymentReconcileServiceImp extends PaymentReconcileServiceGrpc.Paym
                             .mapToInt(Payable::getAmountPaid)
                             .sum();
 
-                    Integer remainingAmount = paymentReconcileDTO.getInvoiceAmount()-totalPayment;
+                    Integer remainingAmount = invoice.getAmount()-totalPayment;
                     Integer newAmountWithPenalty = remainingAmount + paymentReconcileDTO.getInvoiceAmount()+(paymentReconcileDTO.getPenalty()*remainingAmount)/paymentReconcileDTO.getInvoiceAmount();
                     InvoiceDTO newInvoiceDTO = InvoiceDTO.builder()
                             .amount(newAmountWithPenalty)

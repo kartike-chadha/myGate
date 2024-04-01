@@ -1,0 +1,17 @@
+syntax = "proto3";
+option java_multiple_files = true;
+package com.kartike.my_gate;
+import "google/protobuf/empty.proto";
+
+message MostActiveUser{
+  string userId=1;
+  int32 numberOfActivities=2;
+}
+
+message MostActiveUsersList{
+  repeated MostActiveUser MostActiveUserList=1;
+}
+
+service MostActiveUserService{
+  rpc getMostActiveUsers(google.protobuf.Empty) returns (MostActiveUsersList);
+}

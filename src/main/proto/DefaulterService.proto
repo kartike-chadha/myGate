@@ -12,9 +12,12 @@ message DefaulterDetail{
 message Defaulters{
   repeated DefaulterDetail defaulterList = 1;
 }
+message amountPayable{
+  int32 amountPayable = 1;
+}
 
 
 
 service DefaulterService{
-  rpc getOwnerWithMostDefaults(google.protobuf.Empty) returns (Defaulters);
+  rpc getOwnerWithMostDefaults(amountPayable) returns (Defaulters);
 }

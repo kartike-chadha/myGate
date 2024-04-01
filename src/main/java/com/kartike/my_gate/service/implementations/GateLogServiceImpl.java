@@ -8,13 +8,12 @@ import com.kartike.my_gate.model.GateLogDTO;
 import com.kartike.my_gate.repos.*;
 import com.kartike.my_gate.service.interfaces.GateLogService;
 import com.kartike.my_gate.util.NotFoundException;
-
-import java.time.OffsetDateTime;
-import java.util.List;
-
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+
+import java.time.OffsetDateTime;
+import java.util.List;
 
 
 @Service

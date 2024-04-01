@@ -11,6 +11,11 @@ public interface VendorService {
     public VendorDTO get(UUID vendorId);
     public UUID create(VendorDTO vendorDTO);
     public void update(UUID venddrId, VendorDTO vendorDTO);
+
+    public void incrementRequest(UUID vendorId);
+
+    public void decrementRequest(UUID vendorId);
+
     public void delete(UUID vendorId);
 
 }

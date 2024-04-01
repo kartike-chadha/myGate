@@ -10,10 +10,11 @@ import com.kartike.my_gate.repos.VendorRepository;
 import com.kartike.my_gate.service.interfaces.VendorService;
 import com.kartike.my_gate.util.NotFoundException;
 import com.kartike.my_gate.util.ReferencedWarning;
-import java.util.List;
-import java.util.UUID;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.UUID;
 
 
 @Service
@@ -55,10 +56,25 @@ public class VendorServiceImpl implements VendorService {
     @Override
     public void update(final UUID vendorId, final VendorDTO vendorDTO) {
         final Vendor vendor = vendorRepository.findById(vendorId)
-                .orElseThrow(NotFoundException::new);
+                .orElseThrow(()->new RuntimeException("Vendor Not Found"));
         mapToEntity(vendorDTO, vendor);
         vendorRepository.save(vendor);
     }
+    @Override
+    public void incrementRequest(final UUID vendorId){
+        final Vendor vendor = vendorRepository.findById(vendorId)
+                .orElseThrow(()-> new RuntimeException("Vendor Not found"));
+        vendor.setTotalRequests(vendor.getTotalRequests()+1);
+        vendorRepository.save(vendor);
+    }
+    @Override
+    public void decrementRequest(final UUID vendorId){
+        final Vendor vendor = vendorRepository.findById(vendorId)
+                .orElseThrow(()-> new RuntimeException("Vendor Not found"));
+        vendor.setTotalRequests(vendor.getTotalRequests()-1);
+        vendorRepository.save(vendor);
+    }
+
     @Override
     public void delete(final UUID vendorId) {
         vendorRepository.deleteById(vendorId);
@@ -69,6 +85,7 @@ public class VendorServiceImpl implements VendorService {
         vendorDTO.setVendorName(vendor.getVendorName());
         Amenity amenity = amenityRepository.findById(vendor.getAmenity().getId())
                 .orElseThrow(()->new RuntimeException(""));
+        vendorDTO.setTotalRequests(vendor.getTotalRequests());
         vendorDTO.setAmenityId(amenity.getId());
         return vendorDTO;
     }
@@ -76,7 +93,8 @@ public class VendorServiceImpl implements VendorService {
     private Vendor mapToEntity(final VendorDTO vendorDTO, final Vendor vendor) {
         vendor.setVendorName(vendorDTO.getVendorName());
         Amenity amenity = amenityRepository.findById(vendorDTO.getAmenityId())
-                .orElseThrow(()->new RuntimeException(""));
+                .orElseThrow(()->new RuntimeException("Amenity Not Found"));
+        vendor.setTotalRequests((vendorDTO.getTotalRequests()>0)? vendor.getTotalRequests() : 0);
         vendor.setAmenity(amenity);
         return vendor;
     }

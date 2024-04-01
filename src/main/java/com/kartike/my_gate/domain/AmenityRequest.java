@@ -1,12 +1,11 @@
 package com.kartike.my_gate.domain;
 
 import com.kartike.my_gate.enums.RequestStatusEnum;
-import javax.persistence.*;
-
-import java.time.OffsetDateTime;
-
 import lombok.Getter;
 import lombok.Setter;
+
+import javax.persistence.*;
+import java.time.OffsetDateTime;
 
 
 @Entity
@@ -38,8 +37,6 @@ public class AmenityRequest {
     @Column(nullable = false)
     private OffsetDateTime dateCreated;
 
-    @Column(nullable = false)
-    private OffsetDateTime eta;
 
     @Column(nullable = false)
     private OffsetDateTime scheduledDate;

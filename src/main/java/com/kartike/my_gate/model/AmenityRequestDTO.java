@@ -26,7 +26,7 @@ public class AmenityRequestDTO {
 
     private OffsetDateTime dateCreated;
 
-    private OffsetDateTime eta;
+//    private OffsetDateTime eta;
 
     private OffsetDateTime scheduledDate;
 }

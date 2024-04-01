@@ -18,6 +18,8 @@ public class VendorDTO {
     @Size(max = 255)
     private String vendorName;
 
+    private Integer totalRequests;
+
     @NotNull
     private Integer amenityId;
 

@@ -1,11 +1,12 @@
 package com.kartike.my_gate.domain;
 
 
-import javax.persistence.*;
-import java.util.UUID;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
+
+import javax.persistence.*;
+import java.util.UUID;
 
 
 @Entity
@@ -25,6 +26,8 @@ public class Vendor {
 //    Removed because adding reference with join columns which will handle the creation of fk field
 //    @Column(nullable = false)
 //    private Integer amenityId;
+    @Column(nullable = false)
+    private Integer totalRequests;
 
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "amenity_id", nullable = false, unique = true)
